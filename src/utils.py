@@ -5,5 +5,8 @@ def changeFont(string):
     swap = string.swapcase()
     return swap
 
+def replaceSpaceByGuion(string):
+    """ Funcion que reemplaza los espacios por guiones """
+    return string.replace(" ","-")
 
 print(changeFont(string))
