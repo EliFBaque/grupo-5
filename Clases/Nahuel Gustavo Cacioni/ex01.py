@@ -1,3 +1,5 @@
+#1 - Crear una clase que represente un numero complejo. Tenga 4 metodos que permita las operaciones matematicas basicas (+,-,*,/).
+
 class complex:
     def __init__(self,n1,n2):
         self.n1 = n1

@@ -6,6 +6,8 @@ class Complex(n):
     def __str__(self):
         return f'{self.r}, {self.i}i'
 
+    #2 - Crear una clase que represente un vector de 3 dimensiones. Tenga 4 metodos que permitan las operaciones matematicas basicas (+,-,* y / por un escalar).
+
     def __pls__(self, one):
         return Complex(self.r + one.r, self.i + one.i)
 
