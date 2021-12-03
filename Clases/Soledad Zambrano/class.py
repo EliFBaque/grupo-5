@@ -1,3 +1,5 @@
+from random import randint
+
 #con init clases de numeros complejos
 class Complejo:
      def __init__(self, real, imaginary):
@@ -23,12 +25,12 @@ class Complejo:
 
 
 #clase con init
-complejo=Complejo(3,4)
-print(complejo.getimaginary(9,3))
-print(complejo.suma(3,6))
-print(complejo.resta(3,6))
-print(complejo.multiplicacion(3,6))
-print(complejo.division(3,6))
+# complejo=Complejo(3,4)
+# print(complejo.getimaginary(9,3))
+# print(complejo.suma(3,6))
+# print(complejo.resta(3,6))
+# print(complejo.multiplicacion(3,6))
+# print(complejo.division(3,6))
 
 
 #clase sin init de numero complejo
@@ -87,35 +89,71 @@ class Vector:
 
 class Matriz:
 
-    def __init__(self,a,b,c,d,e,f,g,h,i) :
-        self.m=[[a,b,c],[d,e,f],[g,h,i]]
+    def __init__(self, dim):
+        # self.m=[[a,b,c],[d,e,f],[g,h,i]]
+        matriz=[]
+        for fila in range(dim): # para fila desde 0 hasta dim-1
+            nuevaC = []
+            for columna in range(dim): 
+                nuevaC.append(randint(1,10))
+            matriz.append(nuevaC)
+        
+        # matriz: [[7,4], [4,9]]
+        self.m = matriz
 
     def representacion(self):
-        for row in self.m:
-            print(row)
+        for fila in self.m:
+            print(fila)
 
-    def sumaMatriz(self, m1):
-        filaM1=len(self.m)
-        filaM2 =len(m1)
-        colM1=len(self.m[0])
-        colM2=len(m1[0])
-        if filaM1 == filaM2 and colM1==colM2:
-            m2=Matriz()
-            for i in range(filaM1):
-                for j in range(colM1):
-                    m2[i][j] = self.m[i][j] + m1[i][j]
-            return m2
+    def sumaMatriz(self,m1):
+        matriz=[]
+        dim = len(self.m)
+        if dim != len(m1.m):
+            if(len(self.m[0]) != len(m1.m[0])):
+                return('Las dimensiones de sus matrices no son iguales')
+        for i in range(dim):
+            nuevaC = []
+            for j in range(len(self.m[0])):
+                nuevaC.append(self.m[i][j]+m1.m[i][j])
+            matriz.append(nuevaC)
+        return matriz
+    def restaMatriz(self,m1):
+        matriz=[]
+        dim = len(self.m)
+        if dim != len(m1.m):
+            if(len(self.m[0]) != len(m1.m[0])):
+                return('Las dimensiones de sus matrices no son iguales')
+        for i in range(dim):
+            nuevaC = []
+            for j in range(len(self.m[0])):
+                nuevaC.append(self.m[i][j]-m1.m[i][j])
+            matriz.append(nuevaC)
+        return matriz
+
+    # def multiplicacion(self,vec):
 
 
 
+    
 
+dimension = int(input('Ingrese dimensión de la matriz cuadrada: '))
+dimensionSegunda = int(input('Ingrese dimensión de la matriz cuadrada: '))
 
-matriz=Matriz(2,4,5,3,6,7,3,4,5)
+matriz=Matriz(dimension)
+matrizSegunda=Matriz(dimensionSegunda)
+# print(matriz)
 matriz.representacion()
-#m1=Matriz(2,3,4,5,6,7,8,4,3)
-#print(matriz.sumaMatriz(m1))
+print('\n *********** \n')
+matrizSegunda.representacion()
+print('\n *********** \n')
+#para que la representacion sea igual a las matrices
+suma = matriz.sumaMatriz(matrizSegunda)
+for fila in suma:
+    print(fila)
+
 
         
+
 
 
 
